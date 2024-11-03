@@ -1,4 +1,4 @@
-const nanoid = require('nanoid');
+const {nanoid} = require('nanoid');
 const notes = require('./notes');
 
 function addNoteHandler(request, h){
@@ -14,7 +14,7 @@ function addNoteHandler(request, h){
 
   notes.push(newNote);
 
-  const isSuccess = notes.filter((notes) => note.id === id).length > 0;
+  const isSuccess = notes.filter((note) => note.id === id).length > 0;
 
   if(isSuccess){
     const response = h.response({
@@ -25,7 +25,6 @@ function addNoteHandler(request, h){
       },
     });
 
-    response.header('Access-Control-Allow-Origin','http://notesapp-v1.dicodingacademy.com');
     response.code(201);
     return response;
   }
